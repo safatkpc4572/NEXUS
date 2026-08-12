@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Notes & Tasks</title>
+    <script>
+      (function() {
+        try {
+          var _fetch = typeof window !== 'undefined' ? window.fetch : null;
+          var descriptor = {
+            get: function() { return _fetch; },
+            set: function(v) { _fetch = v; },
+            configurable: true,
+            enumerable: true
+          };
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', descriptor);
+            } catch (e) {}
+          }
+
+          if (typeof window !== 'undefined') {
+            try {
+              Object.defineProperty(window, 'fetch', descriptor);
+            } catch (e) {}
+          }
+
+          if (typeof globalThis !== 'undefined') {
+            try {
+              Object.defineProperty(globalThis, 'fetch', descriptor);
+            } catch (e) {}
+          }
+        } catch (e) {
+          // ignore
+        }
+      })();
+    </script>
+    <meta name="description" content="Minimalist bento-grid task manager & note taking app with customizable point-based gamified rewards." />
+    <meta property="og:title" content="My Google AI Studio App" />
+    <meta property="og:description" content="An application built with Google AI Studio." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

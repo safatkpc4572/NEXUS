@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Notes & Tasks",
+  "description": "Minimalist bento-grid task manager & note taking app with customizable point-based gamified rewards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
