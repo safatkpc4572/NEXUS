@@ -9,7 +9,8 @@ import { RewardShop } from './components/RewardShop';
 import { HistoryLog } from './components/HistoryLog';
 import { AiAssistantModal } from './components/AiAssistantModal';
 import { DataBackupModal } from './components/DataBackupModal';
-import { Menu, Sparkles, Zap, Award, Gift, Plus, Database } from 'lucide-react';
+import { UserManualModal } from './components/UserManualModal';
+import { Menu, Sparkles, Zap, Award, Gift, Plus, Database, BookOpen } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
@@ -20,6 +21,7 @@ export default function App() {
   const [history, setHistory] = useState<RedemptionRecord[]>([]);
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [isBackupOpen, setIsBackupOpen] = useState(false);
+  const [isManualOpen, setIsManualOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Auto-open creation forms when navigating from Dashboard
@@ -258,6 +260,13 @@ export default function App() {
 
         <div className="flex items-center space-x-2">
           <button
+            onClick={() => setIsManualOpen(true)}
+            className="p-2 rounded-xl bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+            title="User Manual & Guide"
+          >
+            <BookOpen className="w-4 h-4" />
+          </button>
+          <button
             onClick={() => setIsBackupOpen(true)}
             className="p-2 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30"
             title="Save / Backup Data"
@@ -283,6 +292,7 @@ export default function App() {
         stats={stats}
         onOpenAi={() => setIsAiOpen(true)}
         onOpenBackup={() => setIsBackupOpen(true)}
+        onOpenManual={() => setIsManualOpen(true)}
         isMobileOpen={isMobileOpen}
         setIsMobileOpen={setIsMobileOpen}
       />
@@ -502,6 +512,15 @@ export default function App() {
           setStats(stats);
           setHistory(history);
         }}
+      />
+
+      {/* Interactive User Manual & Guide Modal */}
+      <UserManualModal
+        isOpen={isManualOpen}
+        onClose={() => setIsManualOpen(false)}
+        onNavigateTab={(tab) => setActiveTab(tab)}
+        onOpenAi={() => setIsAiOpen(true)}
+        onOpenBackup={() => setIsBackupOpen(true)}
       />
     </div>
   );

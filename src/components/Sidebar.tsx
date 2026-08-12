@@ -14,7 +14,9 @@ import {
   User,
   ExternalLink,
   Phone,
-  MessageCircle
+  MessageCircle,
+  BookOpen,
+  HelpCircle
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -23,6 +25,7 @@ interface SidebarProps {
   stats: UserStats;
   onOpenAi: () => void;
   onOpenBackup: () => void;
+  onOpenManual: () => void;
   isMobileOpen: boolean;
   setIsMobileOpen: (open: boolean) => void;
 }
@@ -33,6 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   stats,
   onOpenAi,
   onOpenBackup,
+  onOpenManual,
   isMobileOpen,
   setIsMobileOpen,
 }) => {
@@ -152,8 +156,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
               );
             })}
 
-            {/* Save, Export & Import Data Button */}
-            <div className="pt-2 mt-2 border-t border-[#22222d]">
+            {/* User Manual & Guide Button */}
+            <div className="pt-2 mt-2 border-t border-[#22222d] space-y-1.5">
+              <button
+                onClick={() => {
+                  onOpenManual();
+                  setIsMobileOpen(false);
+                }}
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-indigo-300 bg-indigo-600/10 hover:bg-indigo-600/20 border border-indigo-500/25 hover:border-indigo-500/40 transition-all group"
+              >
+                <div className="flex items-center space-x-3">
+                  <BookOpen className="w-4 h-4 text-indigo-400" />
+                  <span>User Manual (নির্দেশিকা)</span>
+                </div>
+                <span className="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded font-bold">
+                  Guide
+                </span>
+              </button>
+
               <button
                 onClick={() => {
                   onOpenBackup();
