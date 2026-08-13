@@ -389,7 +389,7 @@ export default function App() {
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-white tracking-tight flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-amber-500" />
-                    <span>Custom Rewards Shop</span>
+                    <span>Reward Shop</span>
                   </h3>
                   <div className="flex items-center space-x-2">
                     <button
